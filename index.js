@@ -50,7 +50,7 @@ module.exports = function words(language) {
     var filePath = path.resolve(path.join(__dirname, `./dictionary/${language}`));
     
     var text = fs.readFileSync(filePath, "utf-8");
-    text = text.split('\n');
+    text = text.split(/\r\n/ugim);
     text.forEach(word => {
         trie.insert(word);
     });
