@@ -27,6 +27,8 @@ Trie.prototype.insert = function(word) {
 }
 
 Trie.prototype.check = function word(word) {
+    word = word.toLowerCase();
+
     if(this.root == null) return false;
     var temp = this.root;
     for(var i = 0; i < word.length; ++i)
@@ -52,7 +54,7 @@ module.exports = function words(language) {
     var text = fs.readFileSync(filePath, "utf-8");
     text = text.split(/\r\n/ugim);
     text.forEach(word => {
-        trie.insert(word);
+        trie.insert(word?.toLowerCase());
     });
     
     return trie;
